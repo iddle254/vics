@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import Home from "./home/home.component";
+import About from "./about/about.page";
+import Practice from "./practice-areas/practice.page";
+import Insights from "./insights/insights.page";
+import {
+  Route,
+  withRouter,
+  RouteComponentProps,
+  Switch,
+} from "react-router-dom";
+import { Container } from "semantic-ui-react";
+import NotFound from "./components/not-found/Not-found.component";
+import Contact from "./components/contact-us/contact-us.component";
+// import "semantic-ui-css/semantic.min.css";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Switch>
+      <Route exact path="/" component={Home} />
+      <Route exact path="/about" component={About} />
+      <Route exact path="/practice-area" component={Practice} />
+      <Route path="/insights" component={Insights} />
+      <Route path="/contact" component={Contact} />
+      <Route component={NotFound} />
+    </Switch>
   );
 }
 
